@@ -16,7 +16,7 @@ jobs:
       uses: subosito/flutter-action@v2
       with:
         channel: stable
-    - run: dart format .
+    - run: dart format . --set-exit-if-changed
     - run: flutter pub get
     - run: flutter build apk
       

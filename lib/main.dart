@@ -11,7 +11,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        home: Container(color: Colors.blue));
+    return MaterialApp(home: Container(color: Colors.blue));
   }
 }
