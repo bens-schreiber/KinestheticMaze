@@ -1,0 +1,23 @@
+name: Build Dart and Flutter
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+jobs:
+  buildFlutter:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Clone repository
+      uses: actions/checkout@v4
+    - name: Build Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        channel: stable
+    - run: dart format .
+    - run: flutter pub get
+    - run: flutter build apk
+      
+  
