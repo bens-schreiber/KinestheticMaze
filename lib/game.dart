@@ -2,6 +2,7 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:hackathon_2024/car.dart';
 import 'package:hackathon_2024/gyroscope/direction_vector.dart';
 import 'player.dart';
 
@@ -13,7 +14,7 @@ class MyGame extends FlameGame
     with TapDetector, VerticalDragDetector, HorizontalDragDetector {
   final double characterSize = 100.0;
   late Player player;
-
+  late Car car;
   @override
   Future<void> onLoad() async {
     super.onLoad();
@@ -21,7 +22,11 @@ class MyGame extends FlameGame
       ..sprite = await Sprite.load('player.png')
       ..size = Vector2(characterSize, characterSize)
       ..position = Vector2(characterSize / 2, characterSize / 2);
-
+    car = Car()
+      ..sprite = await Sprite.load('car.png')
+      ..size = Vector2(characterSize, characterSize)
+      ..position = Vector2(characterSize / 2, characterSize / 2);
+    add(car);
     add(player);
   }
 
@@ -49,5 +54,11 @@ class MyGame extends FlameGame
   void update(double dt) {
     super.update(dt);
     directionVectorStream.first.then((value) => player.move(value));
+    car.move(Vector2(4, 0));
+
+    if(car.position.x > size.x){
+      car.position = Vector2(0, 0);
+    }
+    
   }
 }
