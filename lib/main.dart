@@ -26,8 +26,8 @@ class MyApp extends StatelessWidget {
             GameWidget(
               game: MyGame(), // Embed the Flame game here
             ),
-            IgnorePointer(ignoring: true, child: ClockWidget()),
-            IgnorePointer(ignoring: true, child: Gyroscope())
+            const IgnorePointer(ignoring: true, child: ClockWidget()),
+            const IgnorePointer(ignoring: true, child: Gyroscope())
           ]),
         ),
       ),

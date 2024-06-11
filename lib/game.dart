@@ -2,16 +2,16 @@ import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:hackathon_2024/gyroscope/direction_vector.dart';
 import 'player.dart';
 
 void main() {
   runApp(GameWidget(game: MyGame()));
 }
 
-class MyGame extends FlameGame with TapDetector {
+class MyGame extends FlameGame
+    with TapDetector, VerticalDragDetector, HorizontalDragDetector {
   final double characterSize = 100.0;
-  double x = 2;
-  double y = 2;
   late Player player;
 
   @override
@@ -27,19 +27,27 @@ class MyGame extends FlameGame with TapDetector {
 
   @override
   void onTapDown(TapDownInfo info) {
-    player.isMoving = true;
     player.startMove();
   }
 
   @override
   void onTapUp(TapUpInfo info) {
-    player.isMoving = false;
+    player.stopMove();
+  }
+
+  @override
+  void onHorizontalDragEnd(DragEndInfo info) {
+    player.stopMove();
+  }
+
+  @override
+  void onVerticalDragEnd(DragEndInfo info) {
     player.stopMove();
   }
 
   @override
   void update(double dt) {
     super.update(dt);
-    player.move(x, y);
+    directionVectorStream.first.then((value) => player.move(value));
   }
 }
