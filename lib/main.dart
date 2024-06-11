@@ -22,11 +22,13 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: Container(
           color: Colors.blue,
-          child: Stack( children: [GameWidget(
-            game: MyGame(), // Embed the Flame game here
-          ), IgnorePointer(ignoring: true,
-child: ClockWidget()), IgnorePointer( ignoring: true,
-child: Gyroscope())]),
+          child: Stack(children: [
+            GameWidget(
+              game: MyGame(), // Embed the Flame game here
+            ),
+            IgnorePointer(ignoring: true, child: ClockWidget()),
+            IgnorePointer(ignoring: true, child: Gyroscope())
+          ]),
         ),
       ),
     );

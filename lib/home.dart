@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class Home extends StatelessWidget {
   const Home({super.key});
 
@@ -9,8 +8,7 @@ class Home extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: const Text('Card Sample')),
-        body: Container(
-          color: Colors.green),
+        body: Container(color: Colors.green),
       ),
     );
   }
