@@ -1,9 +1,7 @@
-import 'dart:async';
-
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_2024/gyroscope/direction_vector.dart';
-import 'package:hackathon_2024/gyroscope/gyroscope.dart';
+import 'game.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,10 +15,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-        home: Scaffold(
-            body: Center(
-      child: Gyroscope(),
-    )));
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          color: Colors.blue,
+          child: GameWidget(
+            game: MyGame(), // Embed the Flame game here
+          ),
+        ),
+      ),
+    );
   }
 }
