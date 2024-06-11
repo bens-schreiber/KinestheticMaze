@@ -1,5 +1,6 @@
-import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:flame/game.dart';
+import 'game.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,6 +12,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Container(color: Colors.blue));
+    return MaterialApp(
+      home: Scaffold(
+        body: Container(
+          color: Colors.blue,
+          child: GameWidget(
+            game: MyGame(), // Embed the Flame game here
+          ),
+        ),
+      ),
+    );
   }
 }
