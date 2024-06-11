@@ -1,9 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:flame/game.dart';
+import 'package:flutter/material.dart';
+import 'package:hackathon_2024/gyroscope/direction_vector.dart';
 import 'game.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  // ignore: unused_local_variable
+  final gyroscopeStream = registerGyroscope();
   runApp(const MyApp());
 }
 
