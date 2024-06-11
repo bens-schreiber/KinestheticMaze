@@ -13,7 +13,7 @@ class ClockWidget extends StatelessWidget {
         int minutes = (second % 3600) ~/ 60;
         int seconds = second % 60;
         String formattedTime = '${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
-        return Container(margin:  ,child: Card( margin: const EdgeInsets.all(20.0),
+        return Container(child: Card( margin: const EdgeInsets.all(20.0),
 child: ListTile(title: Text('Current Time: $formattedTime', style: const TextStyle(fontSize: 20.0)))));
       },
     );

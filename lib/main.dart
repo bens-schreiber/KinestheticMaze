@@ -1,6 +1,7 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_2024/gyroscope/direction_vector.dart';
+import 'package:hackathon_2024/gyroscope/gyroscope.dart';
 import 'game.dart';
 import 'package:hackathon_2024/ClockWidget.dart';
 import 'ClockWidget.dart';
@@ -21,9 +22,11 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         body: Container(
           color: Colors.blue,
-          child: GameWidget(
+          child: Stack( children: [GameWidget(
             game: MyGame(), // Embed the Flame game here
-          ),
+          ), IgnorePointer(ignoring: true,
+child: ClockWidget()), IgnorePointer( ignoring: true,
+child: Gyroscope())]),
         ),
       ),
     );
