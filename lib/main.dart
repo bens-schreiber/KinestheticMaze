@@ -1,5 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'CardExample.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -11,6 +12,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Container(color: Colors.blue));
+    return MaterialApp(home: Container(
+      color: Colors.blue, child: const CardExample()),
+      title: 'myApp',);
   }
 }
