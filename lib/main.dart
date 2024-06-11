@@ -1,7 +1,6 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_2024/ClockWidget.dart';
-import 'StartGameCard.dart';
 import 'ClockWidget.dart';
 
 void main() {
