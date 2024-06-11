@@ -1,8 +1,14 @@
+import 'dart:async';
+
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:hackathon_2024/gyroscope/direction_vector.dart';
+import 'package:hackathon_2024/gyroscope/gyroscope.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  // ignore: unused_local_variable
+  final gyroscopeStream = registerGyroscope();
   runApp(const MyApp());
 }
 
@@ -11,6 +17,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Container(color: Colors.blue));
+    return const MaterialApp(
+        home: Scaffold(
+            body: Center(
+      child: Gyroscope(),
+    )));
   }
 }
