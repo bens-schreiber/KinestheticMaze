@@ -1,6 +1,8 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-import 'CardExample.dart';
+import 'package:hackathon_2024/ClockWidget.dart';
+import 'StartGameCard.dart';
+import 'ClockWidget.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,8 +14,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: Container(
-      color: Colors.blue, child: const CardExample()),
-      title: 'myApp',);
+    return MaterialApp( title: 'myApp', home: Scaffold(body: Container(
+      color: Colors.blue,
+      width: double.infinity,
+       child: const Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          ClockWidget(),
+        ],
+      )
+     )));
   }
 }
