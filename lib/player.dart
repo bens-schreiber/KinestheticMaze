@@ -10,6 +10,7 @@ class Player extends SpriteComponent with HasGameRef {
   void stopMove() {
     isMoving = false;
   }
+
   void move(x, y) {
     if (isMoving) {
       position.add(Vector2(x, y));
