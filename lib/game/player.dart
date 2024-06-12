@@ -37,9 +37,6 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
       ..width = width * 0.8
       ..height = height * 0.8;
     add(hitbox);
-    if (isCollidingCross && car.isMoving) {
-      FlameAudio.play('car-honk.mp3');
-    }
   }
 
   @override

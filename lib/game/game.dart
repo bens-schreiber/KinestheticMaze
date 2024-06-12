@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:hackathon_2024/game/player.dart';
 import 'package:hackathon_2024/game/wall.dart';
 import 'package:hackathon_2024/game/wall_collidable.dart';
+import 'package:flame_audio/flame_audio.dart';
 
 void main() {
   runApp(GameWidget(game: MyGame()));
@@ -99,19 +100,19 @@ class MyGame extends FlameGame
       KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     final isKeyDown = event is KeyDownEvent;
     if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
-      y = isKeyDown ? -5.0 : 0.0;
+      y = isKeyDown ? -10.0 : 0.0;
       player.startMove();
       return KeyEventResult.handled;
     } else if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
-      y = isKeyDown ? 5.0 : 0.0;
+      y = isKeyDown ? 10.0 : 0.0;
       player.startMove();
       return KeyEventResult.handled;
     } else if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
-      x = isKeyDown ? -5.0 : 0.0;
+      x = isKeyDown ? -10.0 : 0.0;
       player.startMove();
       return KeyEventResult.handled;
     } else if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
-      x = isKeyDown ? 5.0 : 0.0;
+      x = isKeyDown ? 10.0 : 0.0;
       player.startMove();
       return KeyEventResult.handled;
     }
@@ -125,5 +126,8 @@ class MyGame extends FlameGame
     // player.move(directionVectorCache);
     player.move(Vector2(x, y));
     car.move();
+    if (player.isCollidingCross && car.isMoving) {
+      FlameAudio.play('car-honk.mp3');
+    }
   }
 }
