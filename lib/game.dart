@@ -48,15 +48,15 @@ class MyGame extends FlameGame
     // add(homePage);
     add(player);
 
-    final Vector2 leftEnd = Vector2(00, 550);
-    final Vector2 rightEnd = Vector2(450, 550);
+    final Vector2 leftEnd = Vector2(00, 460);
+    final Vector2 rightEnd = Vector2(450, 460);
     add(WallCollidable(leftEnd, recSize));
     add(WallCollidable(rightEnd, recSize));
 
     car = Car()
       ..sprite = await Sprite.load('car.png')
       ..size = Vector2(characterSize, characterSize)
-      ..position = Vector2(80, 550);
+      ..position = Vector2(80, 460);
     add(car);
   }
 

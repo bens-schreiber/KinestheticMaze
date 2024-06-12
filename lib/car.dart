@@ -5,7 +5,7 @@ import 'package:hackathon_2024/wall_collidable.dart';
 
 class Car extends SpriteComponent with HasGameRef, CollisionCallbacks {
   late ShapeHitbox hitbox;
-  Vector2 direction = Vector2(30, 0);
+  Vector2 direction = Vector2(35, 0);
   bool isMoving = true;
   late int carCounter = 0;
   void move() {
@@ -30,6 +30,12 @@ class Car extends SpriteComponent with HasGameRef, CollisionCallbacks {
     if (other is WallCollidable) {
       if (carCounter == 6) {
         isMoving = false;
+        Future.delayed(Duration(seconds: 3), () {
+          if (!isMoving) {
+            isMoving = true;
+            carCounter = 0;
+          }
+        });
       }
       direction = -direction;
       angle += 3.14159;
