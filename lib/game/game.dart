@@ -133,7 +133,7 @@ class MyGame extends FlameGame
     if (player.isCollidingWithCrosswalk && car.isMoving && !_waitSound) {
       _waitSound = true;
       FlameAudio.play('car-honk.mp3');
-      Future.delayed(const Duration(milliseconds: 500), () {
+      Future.delayed(const Duration(milliseconds: 1000), () {
         _waitSound = false;
       });
     }
