@@ -51,7 +51,7 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
       position.setFrom(Vector2(170, 250)); // Revert to start of crosswalk
     } else if (other is Finish) {
       FlameAudio.play('win.mp3');
-      position.setZero();
+      position = Vector2(50, 85); // Revert to start of crosswalk
     } else if (other is Crosswalk) {
       Future.microtask(() async {
         for (int i = 0; i < 3; i++) {

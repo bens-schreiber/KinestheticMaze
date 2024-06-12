@@ -36,7 +36,7 @@ class MyGame extends FlameGame
     player = Player()
       ..sprite = await Sprite.load('player.png')
       ..size = Vector2(characterSize, characterSize)
-      ..position = Vector2(0, 65);
+      ..position = Vector2(50,75);
 
     final homePage = await TiledComponent.load('map.tmx', Vector2.all(32));
 
@@ -61,7 +61,6 @@ class MyGame extends FlameGame
       add(Wall(wall));
     }
 
-    // add(homePage);
     add(player);
 
     final Vector2 leftEnd = Vector2(00, 460);
@@ -124,8 +123,8 @@ class MyGame extends FlameGame
   void update(double dt) {
     super.update(dt);
     //Comment this out to use emulator rather than tablet
-    player.move(directionVectorCache);
-    // player.move(Vector2(x, y));
+   // player.move(directionVectorCache);
+   player.move(Vector2(x, y));
     car.move();
   }
 }
