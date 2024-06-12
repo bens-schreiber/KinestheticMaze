@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="62">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="8" nextobjectid="67">
  <tileset firstgid="1" source="earth.tsx"/>
  <objectgroup id="2" name="walls">
-  <object id="53" x="-1" y="65" width="128" height="351"/>
-  <object id="54" x="223" y="2" width="93" height="414"/>
+  <object id="53" x="-1" y="129" width="128" height="287"/>
+  <object id="54" x="223" y="0" width="96.3333" height="416"/>
   <object id="56" x="222" y="497" width="99" height="145"/>
   <object id="57" x="0" y="500" width="128" height="141"/>
+  <object id="62" x="0" y="-3" width="319" height="68"/>
+  <object id="63" x="-1" y="60" width="33" height="74"/>
+  <object id="65" x="119" y="608" width="102" height="31"/>
  </objectgroup>
- <objectgroup id="7" name="crosswalk">
-  <object id="59" x="128" y="402" width="95" height="13"/>
+ <objectgroup id="7" name="crosswalk" visible="0">
+  <object id="59" x="128" y="402" width="95" height="108"/>
  </objectgroup>
- <objectgroup id="4" name="start">
-  <object id="49" x="1.33333" y="0" width="30.6667" height="31.3333"/>
- </objectgroup>
- <objectgroup id="5" name="finish">
+ <objectgroup id="4" name="start" visible="0"/>
+ <objectgroup id="5" name="finish" visible="0">
   <object id="52" x="929" y="607" width="29" height="31"/>
-  <object id="58" x="128" y="619" width="98" height="22"/>
+  <object id="58" x="127" y="586" width="98" height="22"/>
  </objectgroup>
  <objectgroup id="6" name="car">
   <object id="55" x="24" y="432" width="61" height="44"/>

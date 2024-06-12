@@ -12,7 +12,6 @@ class Finish extends SpriteComponent with HasGameRef, CollisionCallbacks {
     await super.onLoad();
     sprite = await Sprite.load('finish.jpg');
     size = Vector2(finish.width, finish.height);
-    debugMode = true;
     position = Vector2(finish.x, finish.y);
     add(RectangleHitbox(
         size: Vector2(finish.width, finish.height),
