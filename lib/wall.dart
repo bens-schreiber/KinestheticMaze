@@ -12,7 +12,6 @@ class Wall extends SpriteComponent with HasGameRef, CollisionCallbacks {
     await super.onLoad();
     sprite = await Sprite.load('wall.png');
     size = Vector2(wall.width, wall.height);
-    debugMode = true;
     position = Vector2(wall.x, wall.y);
     add(RectangleHitbox(
         size: Vector2(wall.width, wall.height),

@@ -46,6 +46,7 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
       position.setFrom(previousPosition); // Revert to previous position
     } else if (other is Car) {
       isMoving = false;
+      FlameAudio.play('crash.mp3');
       position.setFrom(Vector2(170, 250)); // Revert to start of crosswalk
     } else if (other is Finish) {
        FlameAudio.play('win.mp3');

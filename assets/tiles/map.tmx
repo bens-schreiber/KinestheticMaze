@@ -8,7 +8,7 @@
   <object id="57" x="0" y="500" width="128" height="141"/>
  </objectgroup>
  <objectgroup id="7" name="crosswalk">
-  <object id="59" x="128" y="402" width="95" height="13"/>
+  <object id="59" x="128" y="402" width="95" height="108"/>
  </objectgroup>
  <objectgroup id="4" name="start">
   <object id="49" x="1.33333" y="0" width="30.6667" height="31.3333"/>
