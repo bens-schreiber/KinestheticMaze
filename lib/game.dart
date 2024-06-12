@@ -5,6 +5,9 @@ import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_2024/gyroscope/direction_vector.dart';
 import 'package:hackathon_2024/wall.dart';
+import 'wall_collidable.dart';
+import 'crosswalk_collidable.dart';
+import 'target_collidable.dart';
 import 'player.dart';
 
 void main() {
@@ -12,9 +15,16 @@ void main() {
 }
 
 class MyGame extends FlameGame
-    with TapDetector, VerticalDragDetector, HorizontalDragDetector {
-  final double characterSize = 32.0;
+    with
+        TapDetector,
+        VerticalDragDetector,
+        HorizontalDragDetector,
+        HasCollisionDetection {
+  final double characterSize = 100.0;
   late Player player;
+  double x = 1.0;
+  double y = 2.0;
+  Vector2 recSize = Vector2(40, 40);
 
   @override
   Future<void> onLoad() async {
@@ -34,6 +44,9 @@ class MyGame extends FlameGame
     
    // add(homePage);
     add(player);
+    add(WallCollidable(canvasSize / 2, recSize));
+    add(CrosswalkCollidable(canvasSize / 3, recSize));
+    add(TargetCollidable(canvasSize / 4, recSize));
   }
 
   @override
@@ -59,6 +72,8 @@ class MyGame extends FlameGame
   @override
   void update(double dt) {
     super.update(dt);
-    directionVectorStream.first.then((value) => player.move(value));
+    //Comment this out to use emulator rather than tablet
+    // directionVectorStream.first.then((value) => player.move(value));
+    player.move(Vector2(x, y));
   }
 }
