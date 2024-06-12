@@ -6,6 +6,7 @@ import 'package:hackathon_2024/game/crosswalk.dart';
 import 'package:hackathon_2024/game/wall.dart';
 import 'package:hackathon_2024/game/finish.dart';
 import 'package:flame_audio/flame_audio.dart';
+import 'package:hackathon_2024/overlay/overlay.dart';
 
 class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
   bool isMoving = false;
@@ -55,6 +56,8 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
       position.setFrom(Vector2(170, 250)); // Revert to start of crosswalk
     } else if (other is Finish) {
       FlameAudio.play('win.mp3');
+      gameOverlayTextNotifier.value = "You Win!";
+      gameWinningStateNotifier.value = true;
       position = Vector2(50, 85); // Revert to start of crosswalk
     } else if (other is Crosswalk) {
       isColliding = true;

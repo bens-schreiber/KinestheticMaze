@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hackathon_2024/overlay/overlay.dart';
 
 class ClockWidget extends StatelessWidget {
   const ClockWidget({super.key});
@@ -13,7 +14,7 @@ class ClockWidget extends StatelessWidget {
         int minutes = (second % 3600) ~/ 60;
         int seconds = second % 60;
         String formattedTime =
-            '${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+            '${gameWinningStateNotifier.value ? "Final Time: " : ""} ${hours.toString().padLeft(2, '0')}:${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
         return Card(
             child: ListTile(
                 title: Center(
