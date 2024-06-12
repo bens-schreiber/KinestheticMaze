@@ -53,6 +53,9 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
       HapticFeedback.vibrate();
       isMoving = false;
       FlameAudio.play('crash.mp3');
+      gameOverlayTextNotifier.value =
+          "You were hit by a car! \n Resetting to above the crosswalk";
+
       position.setFrom(Vector2(170, 250)); // Revert to start of crosswalk
     } else if (other is Finish) {
       FlameAudio.play('win.mp3');
