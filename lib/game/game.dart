@@ -36,7 +36,7 @@ class MyGame extends FlameGame
     player = Player()
       ..sprite = await Sprite.load('player.png')
       ..size = Vector2(characterSize, characterSize)
-      ..position = Vector2(0, 0);
+      ..position = Vector2(0, 65);
 
     final homePage = await TiledComponent.load('map.tmx', Vector2.all(32));
 

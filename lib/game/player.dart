@@ -3,15 +3,9 @@ import 'package:flame/components.dart';
 import 'package:flutter/services.dart';
 import 'package:hackathon_2024/game/car.dart';
 import 'package:hackathon_2024/game/crosswalk.dart';
-import 'package:hackathon_2024/game/target.dart';
 import 'package:hackathon_2024/game/wall.dart';
-import 'package:hackathon_2024/car.dart';
-import 'package:hackathon_2024/crosswalk.dart';
-import 'package:hackathon_2024/finish.dart';
-import 'package:hackathon_2024/target.dart';
-import 'package:hackathon_2024/wall.dart';
+import 'package:hackathon_2024/game/finish.dart';
 import 'package:flame_audio/flame_audio.dart';
-
 
 class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
   bool isMoving = false;
@@ -56,7 +50,7 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
       FlameAudio.play('crash.mp3');
       position.setFrom(Vector2(170, 250)); // Revert to start of crosswalk
     } else if (other is Finish) {
-       FlameAudio.play('win.mp3');
+      FlameAudio.play('win.mp3');
       position.setZero();
     } else if (other is Crosswalk) {
       Future.microtask(() async {
