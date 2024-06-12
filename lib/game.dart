@@ -4,6 +4,8 @@ import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_2024/gyroscope/direction_vector.dart';
 import 'wall_collidable.dart';
+import 'crosswalk_collidable.dart';
+import 'target_collidable.dart';
 import 'player.dart';
 
 void main() {
@@ -32,6 +34,8 @@ class MyGame extends FlameGame
 
     add(player);
     add(WallCollidable(canvasSize / 2, recSize));
+    add(CrosswalkCollidable(canvasSize / 3, recSize));
+    add(TargetCollidable(canvasSize / 4, recSize));
   }
 
   @override
