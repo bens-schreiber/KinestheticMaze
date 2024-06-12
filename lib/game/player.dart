@@ -10,7 +10,7 @@ import 'package:hackathon_2024/overlay/overlay.dart';
 
 class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
   bool isMoving = false;
-  bool isColliding = false;
+  bool isCollidingWithCrosswalk = false;
   late ShapeHitbox hitbox;
   Vector2 previousPosition = Vector2.zero();
 
@@ -36,9 +36,6 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
       ..width = width * 0.8
       ..height = height * 0.8;
     add(hitbox);
-    if (isColliding) {
-      //Add Feedback
-    }
   }
 
   @override
@@ -63,13 +60,7 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
       gameWinningStateNotifier.value = true;
       position = Vector2(50, 85); // Revert to start of crosswalk
     } else if (other is Crosswalk) {
-      isColliding = true;
-      Future.microtask(() async {
-        for (int i = 0; i < 3; i++) {
-          HapticFeedback.mediumImpact();
-          await Future.delayed(const Duration(milliseconds: 200));
-        }
-      });
+      isCollidingWithCrosswalk = true;
     }
   }
 
@@ -77,7 +68,7 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
   void onCollisionEnd(PositionComponent other) {
     super.onCollisionEnd(other);
     if (other is Crosswalk) {
-      isColliding = false;
+      isCollidingWithCrosswalk = false;
     }
   }
 }

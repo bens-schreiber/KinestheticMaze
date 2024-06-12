@@ -9,7 +9,9 @@ class ClockWidget extends StatelessWidget {
     return StreamBuilder(
       stream: Stream.periodic(const Duration(seconds: 1)),
       builder: (context, snapshot) {
-        second++;
+        if (!gameWinningStateNotifier.value) {
+          second++;
+        }
         int hours = second ~/ 3600;
         int minutes = (second % 3600) ~/ 60;
         int seconds = second % 60;

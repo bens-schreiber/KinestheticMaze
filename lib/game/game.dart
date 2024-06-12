@@ -119,6 +119,8 @@ class MyGame extends FlameGame
     return KeyEventResult.ignored;
   }
 
+  bool _waitVibrate = false;
+
   @override
   void update(double dt) {
     super.update(dt);
@@ -126,5 +128,12 @@ class MyGame extends FlameGame
     player.move(directionVectorCache);
     // player.move(Vector2(x, y));
     car.move();
+    if (player.isCollidingWithCrosswalk && !_waitVibrate) {
+      _waitVibrate = true;
+      HapticFeedback.lightImpact();
+      Future.delayed(const Duration(milliseconds: 250), () {
+        _waitVibrate = false;
+      });
+    }
   }
 }
