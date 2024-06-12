@@ -2,8 +2,11 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:hackathon_2024/car.dart';
 import 'package:hackathon_2024/crosswalk.dart';
+import 'package:hackathon_2024/finish.dart';
 import 'package:hackathon_2024/target.dart';
 import 'package:hackathon_2024/wall.dart';
+import 'package:flame_audio/flame_audio.dart';
+
 
 class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
   bool isMoving = false;
@@ -44,8 +47,8 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
     } else if (other is Car) {
       isMoving = false;
       position.setFrom(Vector2(170, 250)); // Revert to start of crosswalk
-    } else if (other is Target) {
-      // Winning State - Maybe exciting vibration or sound?
+    } else if (other is Finish) {
+       FlameAudio.play('win.mp3');
       position.setZero();
     } else if (other is Crosswalk) {
       //Position does not change - vibration for crossing the road - do we want a car?
