@@ -121,6 +121,7 @@ class MyGame extends FlameGame
   }
 
   bool _waitVibrate = false;
+  bool _waitSound = false;
 
   @override
   void update(double dt) {
@@ -130,7 +131,11 @@ class MyGame extends FlameGame
     // player.move(Vector2(x, y));
     car.move();
     if (player.isCollidingWithCrosswalk && car.isMoving) {
+      _waitSound = true;
       FlameAudio.play('car-honk.mp3');
+      Future.delayed(const Duration(milliseconds: 750), () {
+        _waitSound = false;
+      });
     }
     if (player.isCollidingWithCrosswalk && !_waitVibrate) {
       _waitVibrate = true;
