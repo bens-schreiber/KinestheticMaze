@@ -13,7 +13,9 @@ class GameOverlay extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         child,
-        const Opacity(opacity: 0.5, child: _GameOverlay()),
+
+        // change opacity here to see game
+        const Opacity(opacity: 1, child: _GameOverlay()),
       ],
     ));
   }
