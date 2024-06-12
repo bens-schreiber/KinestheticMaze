@@ -51,8 +51,12 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
       // Winning State - Maybe exciting vibration or sound?
       position.setZero();
     } else if (other is Crosswalk) {
-      //Position does not change - vibration for crossing the road - do we want a car?
-      HapticFeedback.lightImpact();
+      Future.microtask(() async {
+        for (int i = 0; i < 3; i++) {
+          HapticFeedback.mediumImpact();
+          await Future.delayed(const Duration(milliseconds: 200));
+        }
+      });
     }
   }
 }

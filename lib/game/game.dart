@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:hackathon_2024/game/player.dart';
 import 'package:hackathon_2024/game/wall.dart';
 import 'package:hackathon_2024/game/wall_collidable.dart';
+import 'package:hackathon_2024/gyroscope/direction_vector.dart';
 
 void main() {
   runApp(GameWidget(game: MyGame()));
@@ -123,8 +124,8 @@ class MyGame extends FlameGame
   void update(double dt) {
     super.update(dt);
     //Comment this out to use emulator rather than tablet
-    // directionVectorStream.first.then((value) => player.move(value));
-    player.move(Vector2(x, y));
+    player.move(directionVectorCache);
+    // player.move(Vector2(x, y));
     car.move();
   }
 }
