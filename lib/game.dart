@@ -3,6 +3,8 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
+import 'package:hackathon_2024/crosswalk.dart';
+import 'package:hackathon_2024/finish.dart';
 import 'package:hackathon_2024/gyroscope/direction_vector.dart';
 import 'package:hackathon_2024/wall.dart';
 import 'player.dart';
@@ -40,6 +42,22 @@ class MyGame extends FlameGame
 
     List<TiledObject> walls =
         homePage.tileMap.getLayer<ObjectGroup>('walls')!.objects;
+
+      List<TiledObject> crosswalks =
+        homePage.tileMap.getLayer<ObjectGroup>('crosswalk')!.objects;
+
+     List<TiledObject> finishes =
+        homePage.tileMap.getLayer<ObjectGroup>('finish')!.objects;
+
+
+
+    for (final finish in finishes) {
+      add(Finish(finish));
+    }
+
+    for (final crosswalk in crosswalks) {
+      add(Crosswalk(crosswalk));
+    }
 
     for (final wall in walls) {
       add(Wall(wall));
