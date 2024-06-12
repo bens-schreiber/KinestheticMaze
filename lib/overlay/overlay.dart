@@ -29,7 +29,7 @@ class _GameOverlay extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: AppBar(
-            title: const Text('IntelliTect Hackathon 2024'),
+            title: const Text('Kinesthic Maze - Intellitect Hackathon 2024'),
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
@@ -51,6 +51,7 @@ class _GameOverlay extends StatelessWidget {
 }
 
 final gameOverlayTextNotifier = ValueNotifier<String>("");
+final gameWinningStateNotifier = ValueNotifier<bool>(false);
 
 class GameText extends StatelessWidget {
   const GameText({super.key});

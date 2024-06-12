@@ -10,7 +10,6 @@ import 'package:flutter/services.dart';
 import 'package:hackathon_2024/game/player.dart';
 import 'package:hackathon_2024/game/wall.dart';
 import 'package:hackathon_2024/game/wall_collidable.dart';
-import 'package:hackathon_2024/gyroscope/direction_vector.dart';
 
 void main() {
   runApp(GameWidget(game: MyGame()));
