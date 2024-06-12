@@ -70,6 +70,8 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
   @override
   void onCollisionEnd(PositionComponent other) {
     super.onCollisionEnd(other);
-    isColliding = false;
+    if (other is Crosswalk) {
+      isColliding = false;
+    }
   }
 }
