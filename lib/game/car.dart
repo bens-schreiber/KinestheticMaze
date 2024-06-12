@@ -1,6 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:hackathon_2024/wall_collidable.dart';
+import 'package:hackathon_2024/game/wall_collidable.dart';
 
 class Car extends SpriteComponent with HasGameRef, CollisionCallbacks {
   late ShapeHitbox hitbox;
@@ -29,7 +29,7 @@ class Car extends SpriteComponent with HasGameRef, CollisionCallbacks {
     if (other is WallCollidable) {
       if (carCounter == 6) {
         isMoving = false;
-        Future.delayed(Duration(seconds: 3), () {
+        Future.delayed(const Duration(seconds: 3), () {
           if (!isMoving) {
             isMoving = true;
             carCounter = 0;

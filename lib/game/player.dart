@@ -1,9 +1,10 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:hackathon_2024/car.dart';
-import 'package:hackathon_2024/crosswalk.dart';
-import 'package:hackathon_2024/target.dart';
-import 'package:hackathon_2024/wall.dart';
+import 'package:flutter/services.dart';
+import 'package:hackathon_2024/game/car.dart';
+import 'package:hackathon_2024/game/crosswalk.dart';
+import 'package:hackathon_2024/game/target.dart';
+import 'package:hackathon_2024/game/wall.dart';
 
 class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
   bool isMoving = false;
@@ -39,16 +40,23 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
       Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollisionStart(intersectionPoints, other);
     if (other is Wall) {
+      HapticFeedback.heavyImpact();
       isMoving = false;
       position.setFrom(previousPosition); // Revert to previous position
     } else if (other is Car) {
+      HapticFeedback.vibrate();
       isMoving = false;
       position.setFrom(Vector2(170, 250)); // Revert to start of crosswalk
     } else if (other is Target) {
       // Winning State - Maybe exciting vibration or sound?
       position.setZero();
     } else if (other is Crosswalk) {
-      //Position does not change - vibration for crossing the road - do we want a car?
+      Future.microtask(() async {
+        for (int i = 0; i < 3; i++) {
+          HapticFeedback.mediumImpact();
+          await Future.delayed(const Duration(milliseconds: 200));
+        }
+      });
     }
   }
 }
