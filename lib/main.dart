@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:hackathon_2024/gyroscope/direction_vector.dart';
 import 'package:hackathon_2024/gyroscope/gyroscope.dart';
 import 'game.dart';
-import 'package:hackathon_2024/ClockWidget.dart';
 import 'ClockWidget.dart';
 
 void main() {
