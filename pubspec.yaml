@@ -19,6 +19,7 @@ dependencies:
 
   # for phone vibration
   vibration: ^1.9.0
+  flame_tiled: ^1.20.2
 
 
 
@@ -32,6 +33,7 @@ flutter:
 
   assets: 
     - assets/images/
+    - assets/tiles/
 
   uses-material-design: true
 

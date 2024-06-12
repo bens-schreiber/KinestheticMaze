@@ -1,6 +1,7 @@
 import 'package:flame/components.dart';
 import 'package:flame/events.dart';
 import 'package:flame/game.dart';
+import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_2024/gyroscope/direction_vector.dart';
 import 'player.dart';
@@ -22,6 +23,8 @@ class MyGame extends FlameGame
       ..size = Vector2(characterSize, characterSize)
       ..position = Vector2(characterSize / 2, characterSize / 2);
 
+    final homePage = await TiledComponent.load('map.tmx', Vector2.all(32));
+    add(homePage);
     add(player);
   }
 
