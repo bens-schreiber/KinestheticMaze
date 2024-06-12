@@ -3,6 +3,7 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_2024/gyroscope/direction_vector.dart';
+import 'wall_collidable.dart';
 import 'player.dart';
 
 void main() {
@@ -10,9 +11,16 @@ void main() {
 }
 
 class MyGame extends FlameGame
-    with TapDetector, VerticalDragDetector, HorizontalDragDetector {
+    with
+        TapDetector,
+        VerticalDragDetector,
+        HorizontalDragDetector,
+        HasCollisionDetection {
   final double characterSize = 100.0;
   late Player player;
+  double x = 1.0;
+  double y = 2.0;
+  Vector2 recSize = Vector2(20, 30);
 
   @override
   Future<void> onLoad() async {
@@ -23,6 +31,7 @@ class MyGame extends FlameGame
       ..position = Vector2(characterSize / 2, characterSize / 2);
 
     add(player);
+    add(WallCollidable(canvasSize / 2, recSize));
   }
 
   @override
@@ -48,6 +57,7 @@ class MyGame extends FlameGame
   @override
   void update(double dt) {
     super.update(dt);
-    directionVectorStream.first.then((value) => player.move(value));
+    //directionVectorStream.first.then((value) => player.move(value));
+    player.move(Vector2(x, y));
   }
 }
