@@ -22,7 +22,7 @@ class MyGame extends FlameGame
   late Player player;
   double x = 1.0;
   double y = 2.0;
-  Vector2 recSize = Vector2(20, 30);
+  Vector2 recSize = Vector2(40, 40);
 
   @override
   Future<void> onLoad() async {
@@ -62,7 +62,7 @@ class MyGame extends FlameGame
   void update(double dt) {
     super.update(dt);
     //Comment this out to use emulator rather than tablet
-    directionVectorStream.first.then((value) => player.move(value));
-    // player.move(Vector2(x, y));
+    // directionVectorStream.first.then((value) => player.move(value));
+    player.move(Vector2(x, y));
   }
 }

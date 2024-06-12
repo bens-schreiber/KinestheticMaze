@@ -1,9 +1,11 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'wall_collidable.dart';
 
 class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
   bool isMoving = false;
   late ShapeHitbox hitbox;
+  Vector2 previousPosition = Vector2.zero();
 
   void startMove() {
     isMoving = true;
@@ -15,6 +17,7 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
 
   void move(Vector2 movement) {
     if (isMoving) {
+      previousPosition.setFrom(position);
       position.add(movement);
     }
   }
@@ -32,7 +35,9 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollisionStart(intersectionPoints, other);
-    isMoving = false;
-    position = Vector2(0, 0);
+    if (other is WallCollidable) {
+      isMoving = false;
+      position.setFrom(previousPosition); // Revert to previous position
+    }
   }
 }
