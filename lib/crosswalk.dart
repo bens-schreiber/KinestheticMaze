@@ -10,7 +10,7 @@ class Crosswalk extends SpriteComponent with HasGameRef, CollisionCallbacks {
   @override
   Future<void> onLoad() async {
     await super.onLoad();
-    sprite = await Sprite.load('crosswalk.png');
+    sprite = await Sprite.load('crosswalk.jpg');
     size = Vector2(crosswalk.width, crosswalk.height);
     debugMode = true;
     position = Vector2(crosswalk.x, crosswalk.y);
