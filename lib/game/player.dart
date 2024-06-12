@@ -45,6 +45,7 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
     if (other is Wall) {
       HapticFeedback.heavyImpact();
       isMoving = false;
+      FlameAudio.play('thud.mp3');
       position.setFrom(previousPosition); // Revert to previous position
     } else if (other is Car) {
       HapticFeedback.vibrate();

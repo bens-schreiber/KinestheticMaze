@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:hackathon_2024/game/player.dart';
 import 'package:hackathon_2024/game/wall.dart';
 import 'package:hackathon_2024/game/wall_collidable.dart';
+import 'package:flame_audio/flame_audio.dart';
 import 'package:hackathon_2024/gyroscope/direction_vector.dart';
 
 void main() {
@@ -100,19 +101,19 @@ class MyGame extends FlameGame
       KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     final isKeyDown = event is KeyDownEvent;
     if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
-      y = isKeyDown ? -5.0 : 0.0;
+      y = isKeyDown ? -10.0 : 0.0;
       player.startMove();
       return KeyEventResult.handled;
     } else if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
-      y = isKeyDown ? 5.0 : 0.0;
+      y = isKeyDown ? 10.0 : 0.0;
       player.startMove();
       return KeyEventResult.handled;
     } else if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
-      x = isKeyDown ? -5.0 : 0.0;
+      x = isKeyDown ? -10.0 : 0.0;
       player.startMove();
       return KeyEventResult.handled;
     } else if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
-      x = isKeyDown ? 5.0 : 0.0;
+      x = isKeyDown ? 10.0 : 0.0;
       player.startMove();
       return KeyEventResult.handled;
     }
@@ -120,6 +121,7 @@ class MyGame extends FlameGame
   }
 
   bool _waitVibrate = false;
+  bool _waitSound = false;
 
   @override
   void update(double dt) {
@@ -128,6 +130,13 @@ class MyGame extends FlameGame
     player.move(directionVectorCache);
     // player.move(Vector2(x, y));
     car.move();
+    if (player.isCollidingWithCrosswalk && car.isMoving && !_waitSound) {
+      _waitSound = true;
+      FlameAudio.play('car-honk.mp3');
+      Future.delayed(const Duration(milliseconds: 1000), () {
+        _waitSound = false;
+      });
+    }
     if (player.isCollidingWithCrosswalk && !_waitVibrate) {
       _waitVibrate = true;
       HapticFeedback.lightImpact();
