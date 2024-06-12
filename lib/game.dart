@@ -5,10 +5,10 @@ import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
 import 'package:hackathon_2024/gyroscope/direction_vector.dart';
 import 'package:hackathon_2024/wall.dart';
-import 'wall_collidable.dart';
-import 'crosswalk_collidable.dart';
-import 'target_collidable.dart';
 import 'player.dart';
+import 'package:flutter/services.dart';
+import 'car.dart';
+import 'wall_collidable.dart';
 
 void main() {
   runApp(GameWidget(game: MyGame()));
@@ -19,9 +19,11 @@ class MyGame extends FlameGame
         TapDetector,
         VerticalDragDetector,
         HorizontalDragDetector,
-        HasCollisionDetection {
-  final double characterSize = 32.0;
+        HasCollisionDetection,
+        KeyboardEvents {
+  final double characterSize = 24.0;
   late Player player;
+  late Car car;
   double x = 1.0;
   double y = 2.0;
   Vector2 recSize = Vector2(40, 40);
@@ -45,9 +47,17 @@ class MyGame extends FlameGame
 
     // add(homePage);
     add(player);
-    //add(WallCollidable(canvasSize / 2, recSize));
-    //add(CrosswalkCollidable(canvasSize / 3, recSize));
-    //add(TargetCollidable(canvasSize / 4, recSize));
+
+    final Vector2 leftEnd = Vector2(00, 550);
+    final Vector2 rightEnd = Vector2(450, 550);
+    add(WallCollidable(leftEnd, recSize));
+    add(WallCollidable(rightEnd, recSize));
+
+    car = Car()
+      ..sprite = await Sprite.load('car.png')
+      ..size = Vector2(characterSize, characterSize)
+      ..position = Vector2(80, 550);
+    add(car);
   }
 
   @override
@@ -71,10 +81,36 @@ class MyGame extends FlameGame
   }
 
   @override
+  KeyEventResult onKeyEvent(
+      KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
+    final isKeyDown = event is KeyDownEvent;
+    if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
+      y = isKeyDown ? -1.0 : 0.0;
+      player.startMove();
+      return KeyEventResult.handled;
+    } else if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
+      y = isKeyDown ? 1.0 : 0.0;
+      player.startMove();
+      return KeyEventResult.handled;
+    } else if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
+      x = isKeyDown ? -1.0 : 0.0;
+      player.startMove();
+      car.isMoving = false;
+      return KeyEventResult.handled;
+    } else if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
+      x = isKeyDown ? 1.0 : 0.0;
+      player.startMove();
+      return KeyEventResult.handled;
+    }
+    return KeyEventResult.ignored;
+  }
+
+  @override
   void update(double dt) {
     super.update(dt);
     //Comment this out to use emulator rather than tablet
     // directionVectorStream.first.then((value) => player.move(value));
     player.move(Vector2(x, y));
+    car.move();
   }
 }
