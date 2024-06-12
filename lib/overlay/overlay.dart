@@ -13,7 +13,9 @@ class GameOverlay extends StatelessWidget {
       alignment: Alignment.center,
       children: [
         child,
-        const Opacity(opacity: 0.5, child: _GameOverlay()),
+
+        // change opacity here to see game
+        const Opacity(opacity: 1, child: _GameOverlay()),
       ],
     ));
   }
@@ -29,7 +31,10 @@ class _GameOverlay extends StatelessWidget {
         child: Scaffold(
           backgroundColor: Theme.of(context).scaffoldBackgroundColor,
           appBar: AppBar(
-            title: const Text('Kinesthic Maze - Intellitect Hackathon 2024'),
+            title: const Text(
+              'Kinesthic Maze -  \n Intellitect Hackathon 2024',
+              textAlign: TextAlign.center,
+            ),
             backgroundColor: Colors.transparent,
             elevation: 0,
           ),
@@ -62,7 +67,11 @@ class GameText extends StatelessWidget {
         valueListenable: gameOverlayTextNotifier,
         builder: (context, value, child) {
           return value.isNotEmpty
-              ? Text(value.toString(), style: const TextStyle(fontSize: 20.0))
+              ? Text(
+                  value.toString(),
+                  style: const TextStyle(fontSize: 20.0),
+                  textAlign: TextAlign.center,
+                )
               : const SizedBox.shrink();
         });
   }
