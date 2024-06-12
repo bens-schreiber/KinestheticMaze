@@ -10,8 +10,7 @@ class Gyroscope extends StatelessWidget {
     return StreamBuilder(
       stream: directionVectorStream,
       builder: (context, snapshot) {
-        if (!snapshot.hasData) return const CircularProgressIndicator();
-        Vector2 vector = snapshot.data!;
+        Vector2 vector = snapshot.data?.clone() ?? directionVectorCache.clone();
         vector.scale(200);
         return CustomPaint(
           painter: VectorPainter(vector),

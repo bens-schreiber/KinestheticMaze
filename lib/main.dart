@@ -1,12 +1,15 @@
 import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hackathon_2024/gyroscope/direction_vector.dart';
-import 'package:hackathon_2024/gyroscope/gyroscope.dart';
-import 'game.dart';
-import 'ClockWidget.dart';
+import 'package:hackathon_2024/overlay/overlay.dart';
+import 'game/game.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+
   // ignore: unused_local_variable
   final gyroscopeStream = registerGyroscope();
   runApp(const MyApp());
@@ -18,18 +21,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: Container(
-          color: Colors.blue,
-          child: Stack(children: [
-            GameWidget(
-              game: MyGame(), // Embed the Flame game here
-            ),
-            const IgnorePointer(ignoring: true, child: ClockWidget()),
-            const IgnorePointer(ignoring: true, child: Gyroscope())
-          ]),
-        ),
-      ),
-    );
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData.dark(),
+        home: GameOverlay(
+          child: GameWidget(game: MyGame()),
+        ));
   }
 }
