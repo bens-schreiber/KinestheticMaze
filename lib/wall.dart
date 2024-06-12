@@ -1,6 +1,6 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:tiled/tiled.dart';
+import 'package:flame_tiled/flame_tiled.dart';
 
 class Wall extends SpriteComponent with HasGameRef, CollisionCallbacks {
   final TiledObject wall;
