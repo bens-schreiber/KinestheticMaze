@@ -57,7 +57,8 @@ class MyGame extends FlameGame
   @override
   void update(double dt) {
     super.update(dt);
-    //directionVectorStream.first.then((value) => player.move(value));
-    player.move(Vector2(x, y));
+    //Comment this out to use emulator rather than tablet
+    directionVectorStream.first.then((value) => player.move(value));
+    // player.move(Vector2(x, y));
   }
 }
