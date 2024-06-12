@@ -10,7 +10,7 @@ class Wall extends SpriteComponent with HasGameRef, CollisionCallbacks{
   @override
   Future<void> onLoad() async{
     await super.onLoad();
-    sprite = await Sprite.load('wall.jpg');
+    sprite = await Sprite.load('wall.png');
     size = Vector2(wall.width, wall.height);
     debugMode = true;
     position = Vector2(wall.x, wall.y);

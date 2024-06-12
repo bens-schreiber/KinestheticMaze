@@ -24,15 +24,15 @@ class MyGame extends FlameGame
       ..size = Vector2(characterSize, characterSize)
       ..position = Vector2(0, 0);
 
-    final homePage = await TiledComponent.load('map.tmx', Vector2.all(32));
+     final homePage = await TiledComponent.load('map.tmx', Vector2.all(32));
 
-    List<TiledObject> walls = homePage.tileMap.getLayer<ObjectGroup>('walls')!.objects;
+     List<TiledObject> walls = homePage.tileMap.getLayer<ObjectGroup>('walls')!.objects;
 
      for(final wall in walls){
-       add(Wall(wall));
-     }
+        add(Wall(wall));
+    }
     
-    add(homePage);
+   // add(homePage);
     add(player);
   }
 
