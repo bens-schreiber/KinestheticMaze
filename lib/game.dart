@@ -43,13 +43,11 @@ class MyGame extends FlameGame
     List<TiledObject> walls =
         homePage.tileMap.getLayer<ObjectGroup>('walls')!.objects;
 
-      List<TiledObject> crosswalks =
+    List<TiledObject> crosswalks =
         homePage.tileMap.getLayer<ObjectGroup>('crosswalk')!.objects;
 
-     List<TiledObject> finishes =
+    List<TiledObject> finishes =
         homePage.tileMap.getLayer<ObjectGroup>('finish')!.objects;
-
-
 
     for (final finish in finishes) {
       add(Finish(finish));
