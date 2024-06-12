@@ -24,4 +24,21 @@ class CrosswalkCollidable extends PositionComponent with CollisionCallbacks {
       ..renderShape = true;
     add(hitbox);
   }
+
+  @override
+  void onCollisionStart(
+    Set<Vector2> intersectionPoints,
+    PositionComponent other,
+  ) {
+    super.onCollisionStart(intersectionPoints, other);
+    hitbox.paint.color = _collisionStartColor;
+  }
+
+  @override
+  void onCollisionEnd(PositionComponent other) {
+    super.onCollisionEnd(other);
+    if (!isColliding) {
+      hitbox.paint.color = _defaultColor;
+    }
+  }
 }
