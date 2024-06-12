@@ -130,10 +130,10 @@ class MyGame extends FlameGame
     player.move(directionVectorCache);
     // player.move(Vector2(x, y));
     car.move();
-    if (player.isCollidingWithCrosswalk && car.isMoving) {
+    if (player.isCollidingWithCrosswalk && car.isMoving && !_waitSound) {
       _waitSound = true;
       FlameAudio.play('car-honk.mp3');
-      Future.delayed(const Duration(milliseconds: 750), () {
+      Future.delayed(const Duration(milliseconds: 500), () {
         _waitSound = false;
       });
     }
