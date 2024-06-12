@@ -85,20 +85,19 @@ class MyGame extends FlameGame
       KeyEvent event, Set<LogicalKeyboardKey> keysPressed) {
     final isKeyDown = event is KeyDownEvent;
     if (event.logicalKey == LogicalKeyboardKey.arrowUp) {
-      y = isKeyDown ? -1.0 : 0.0;
+      y = isKeyDown ? -5.0 : 0.0;
       player.startMove();
       return KeyEventResult.handled;
     } else if (event.logicalKey == LogicalKeyboardKey.arrowDown) {
-      y = isKeyDown ? 1.0 : 0.0;
+      y = isKeyDown ? 5.0 : 0.0;
       player.startMove();
       return KeyEventResult.handled;
     } else if (event.logicalKey == LogicalKeyboardKey.arrowLeft) {
-      x = isKeyDown ? -1.0 : 0.0;
+      x = isKeyDown ? -5.0 : 0.0;
       player.startMove();
-      car.isMoving = false;
       return KeyEventResult.handled;
     } else if (event.logicalKey == LogicalKeyboardKey.arrowRight) {
-      x = isKeyDown ? 1.0 : 0.0;
+      x = isKeyDown ? 5.0 : 0.0;
       player.startMove();
       return KeyEventResult.handled;
     }

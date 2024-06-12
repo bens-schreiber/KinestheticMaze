@@ -1,6 +1,5 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
-import 'package:hackathon_2024/wall.dart';
 import 'package:hackathon_2024/wall_collidable.dart';
 
 class Car extends SpriteComponent with HasGameRef, CollisionCallbacks {
