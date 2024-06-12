@@ -1,7 +1,8 @@
 import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
+import 'package:hackathon_2024/crosswalk.dart';
+import 'package:hackathon_2024/target.dart';
 import 'package:hackathon_2024/wall.dart';
-import 'wall_collidable.dart';
 
 class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
   bool isMoving = false;
@@ -36,9 +37,14 @@ class Player extends SpriteComponent with HasGameRef, CollisionCallbacks {
   void onCollisionStart(
       Set<Vector2> intersectionPoints, PositionComponent other) {
     super.onCollisionStart(intersectionPoints, other);
-    if (other is WallCollidable || other is Wall) {
+    if (other is Wall) {
       isMoving = false;
       position.setFrom(previousPosition); // Revert to previous position
+    } else if (other is Target) {
+      // Winning State - Maybe exciting vibration or sound?
+      position.setZero();
+    } else if (other is Crosswalk) {
+      //Position does not change - vibration for crossing the road - do we want a car?
     }
   }
 }
