@@ -3,14 +3,13 @@ import 'package:flame/events.dart';
 import 'package:flame/game.dart';
 import 'package:flame_tiled/flame_tiled.dart';
 import 'package:flutter/material.dart';
-import 'package:hackathon_2024/crosswalk.dart';
-import 'package:hackathon_2024/finish.dart';
-import 'package:hackathon_2024/gyroscope/direction_vector.dart';
-import 'package:hackathon_2024/wall.dart';
-import 'player.dart';
+import 'package:hackathon_2024/game/car.dart';
+import 'package:hackathon_2024/game/crosswalk.dart';
+import 'package:hackathon_2024/game/finish.dart';
 import 'package:flutter/services.dart';
-import 'car.dart';
-import 'wall_collidable.dart';
+import 'package:hackathon_2024/game/player.dart';
+import 'package:hackathon_2024/game/wall.dart';
+import 'package:hackathon_2024/game/wall_collidable.dart';
 
 void main() {
   runApp(GameWidget(game: MyGame()));
