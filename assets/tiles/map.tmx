@@ -2,8 +2,6 @@
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="32" tileheight="32" infinite="0" nextlayerid="4" nextobjectid="35">
  <tileset firstgid="1" source="earth.tsx"/>
  <objectgroup id="2" name="walls">
-  <object id="3" x="32" y="0" width="32.6667" height="223.333"/>
-  <object id="4" x="54" y="192.667" width="74" height="30"/>
   <object id="5" x="94.6667" y="32.6667" width="64" height="32"/>
   <object id="6" x="96" y="64" width="30" height="96"/>
   <object id="7" x="160" y="98" width="30" height="91.3333"/>

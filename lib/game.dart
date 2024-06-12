@@ -20,7 +20,7 @@ class MyGame extends FlameGame
         VerticalDragDetector,
         HorizontalDragDetector,
         HasCollisionDetection {
-  final double characterSize = 100.0;
+  final double characterSize = 32.0;
   late Player player;
   double x = 1.0;
   double y = 2.0;
@@ -44,9 +44,9 @@ class MyGame extends FlameGame
     
    // add(homePage);
     add(player);
-    add(WallCollidable(canvasSize / 2, recSize));
-    add(CrosswalkCollidable(canvasSize / 3, recSize));
-    add(TargetCollidable(canvasSize / 4, recSize));
+    //add(WallCollidable(canvasSize / 2, recSize));
+    //add(CrosswalkCollidable(canvasSize / 3, recSize));
+    //add(TargetCollidable(canvasSize / 4, recSize));
   }
 
   @override
